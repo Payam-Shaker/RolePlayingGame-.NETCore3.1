@@ -15,3 +15,7 @@
 3. N-Tire:
 https://www.guru99.com/n-tier-architecture-system-concepts-tips.html
 
+4. Controller: has view support(like a mvc project) vs ControllerBase: has no view support
+example: public class CharacterController : ControllerBase
+
+
