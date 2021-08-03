@@ -3,6 +3,7 @@ using RolePlayingGame.Api.Services;
 using RolePlayingGame.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace RolePlayingGame.Api.Controllers
 {
@@ -25,23 +26,23 @@ namespace RolePlayingGame.Api.Controllers
 
         [HttpGet]
         [Route("GetAll")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var result = _characterServices.GetAllCharacters();
+            var result = await _characterServices.GetAllCharacters();
             return Ok(result);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetSingel(int id)
+        public async Task<IActionResult> GetSingel(int id)
         {
-            var result = _characterServices.GetCharacterById(id);
+            var result = await _characterServices.GetCharacterById(id);
             return Ok(result);
         }
 
         [HttpPost]
-        public IActionResult AddCharacter(Character newCharacter)
+        public async Task<IActionResult> AddCharacter(Character newCharacter)
             {
-            var result = _characterServices.AddCharacter(newCharacter);
+            var result = await _characterServices.AddCharacter(newCharacter);
             return Ok(result);
         }
 

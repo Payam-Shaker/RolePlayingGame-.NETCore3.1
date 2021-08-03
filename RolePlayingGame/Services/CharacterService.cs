@@ -6,28 +6,35 @@ using System.Threading.Tasks;
 
 namespace RolePlayingGame.Api.Services
 {
+    //CharacterService is implementation of ICharacterService
     public class CharacterService : ICharacterService
     {
+        private static ServiceResponse<List<Character>> serviceResponse = new ServiceResponse<List<Character>>();
+        private static ServiceResponse<Character> serviceResponseSingle = new ServiceResponse<Character>();
+
         private static List<Character> characters = new List<Character>
         {
             new Character(),
+            
             new Character {Id = 1, Name = "Sam"}
         };
 
-        public List<Character> AddCharacter(Character newCharacter)
+public async Task<ServiceResponse<List<Character>>> AddCharacter(Character newCharacter)
         {
-            characters.Add(newCharacter);
-            return characters;
+            serviceResponse.Data.Add(newCharacter);
+            return serviceResponse;
         }
 
-        public List<Character> GetAllCharacters()
+        public async Task<ServiceResponse<List<Character>>> GetAllCharacters()
         {
-            return characters;
+            serviceResponse.Data = characters;
+            return serviceResponse;
         }
 
-        public Character GetCharacterById(int id)
+        public async Task<ServiceResponse<Character>> GetCharacterById(int id)
         {
-            return characters.FirstOrDefault(x => x.Id == id);
+            serviceResponseSingle.Data = characters.FirstOrDefault(x => x.Id == id);
+            return serviceResponseSingle;
         }
     }
 }

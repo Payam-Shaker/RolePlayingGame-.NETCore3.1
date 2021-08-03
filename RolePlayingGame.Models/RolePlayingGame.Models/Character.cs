@@ -11,7 +11,7 @@ namespace RolePlayingGame.Models
         public int Defense { get; set; } = 10;
         public int Intelligence { get; set; } = 10;
         public RpgClass Class { get; set; } = RpgClass.Knight;
-        public DateTime DateCreates { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool IsDeleted { get; set; }
     }
 }

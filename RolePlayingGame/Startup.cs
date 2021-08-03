@@ -35,6 +35,7 @@ namespace RolePlayingGame
 
             services.AddControllers();
             services.AddSwaggerGen();
+            //this (AddScoped) used for lif time management to the objects.  
             services.AddScoped<ICharacterService, CharacterService>();
         }
 
